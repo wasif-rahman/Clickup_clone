@@ -1,0 +1,264 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #4a6baf;
+}
+
+.input-section {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.input-section div {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+input[type="text"], select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #4a6baf;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #3a5a9f;
+}
+
+.board-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.category {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  min-width: 250px;
+  padding: 15px;
+}
+
+.category-header {
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  color: #4a6baf;
+}
+
+.subcategory {
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-left: 3px solid #ddd;
+  padding-left: 10px;
+}
+
+.subcategory-header {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.task-list {
+  min-height: 20px;
+}
+
+.task {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border-left: 3px solid #4a6baf;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.task:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.task.dragging {
+  opacity: 0.5;
+  background-color: #e9ecef;
+}
+
+.empty-message {
+  color: #999;
+  font-style: italic;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Task controls */
+.task-controls {
+  display: none;
+  float: right;
+}
+
+.task:hover .task-controls {
+  display: inline-block;
+}
+
+.task-controls button {
+  background: none;
+  border: none;
+  color: #666;
+  padding: 2px 5px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.task-controls button:hover {
+  color: #4a6baf;
+}
+
+/* Category/Subcategory controls */
+.category-header, .subcategory-header {
+  position: relative;
+  padding-right: 30px;
+}
+
+.category-controls, .subcategory-controls {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.category-controls button, .subcategory-controls button {
+  background: none;
+  border: none;
+  color: #666;
+  padding: 0 5px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.category-controls button:hover, .subcategory-controls button:hover {
+  color: #4a6baf;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-btn {
+  background-color: #dc3545 !important;
+}
+
+.delete-btn:hover {
+  background-color: #c82333 !important;
+}
+
+/* Draggable items */
+.category, .subcategory {
+  cursor: move;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.category:hover, .subcategory:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.category.dragging, .subcategory.dragging {
+  opacity: 0.5;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Drop indicators */
+.category.drop-indicator-top {
+  border-top: 2px solid #4a6baf !important;
+}
+
+.category.drop-indicator-bottom {
+  border-bottom: 2px solid #4a6baf !important;
+}
+
+.category-header, .subcategory-header {
+  cursor: move;
+}
+
+.category-controls button, .subcategory-controls button {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.category.selected-category {
+  border-left: 4px solid #4a6baf;
+  padding-left: 6px;
+}

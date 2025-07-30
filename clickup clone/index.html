@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini ClickUp Clone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <h1>Mini ClickUp Clone</h1>
+
+    <div class="input-section">
+      <div>
+        <input type="text" id="taskInput" placeholder="Enter task" />
+        <button id="addTaskBtn">Add Task</button>
+      </div>
+      <div>
+        <input type="text" id="categoryInput" placeholder="Enter category" />
+        <button id="addCategoryBtn">Add Category</button>
+      </div>
+      <div>
+        <select id="parentCategorySelect">
+          <option value="">Select parent category (optional)</option>
+        </select>
+        <input type="text" id="subcategoryInput" placeholder="Enter subcategory..." />
+        <button id="addSubcategoryBtn">Add Subcategory</button>
+      </div>
+    </div>
+
+    <div class="board-container" id="board">
+      
+    </div>
+
+    
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modalTitle">Edit Item</h2>
+        <input type="text" id="editInput" class="modal-input" placeholder="Enter new data" />
+        <div class="modal-buttons">
+          <button id="saveEditBtn">Save</button>
+          <button id="deleteItemBtn" class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
